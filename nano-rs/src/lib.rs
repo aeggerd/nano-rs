@@ -1,3 +1,5 @@
+mod base;
+
 mod account_balance;
 mod account_block_count;
 mod account_get;
@@ -77,9 +79,11 @@ pub struct RpcClient {
 }
 
 pub struct Walet {
-    pub account: String,
-    pub key: String,
+    pub account: base::Account,
+    pub key: base::AccountKey,
 }
+
+
 
 impl RpcClient {
     // https://docs.nano.org/commands/rpc-protocol/#account_balance
