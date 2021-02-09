@@ -74,8 +74,11 @@ mod work_validate;
 
 pub struct RpcClient {
     pub rpc_base: String,
-    pub walet: String,
+}
+
+pub struct Walet {
     pub account: String,
+    pub key: String,
 }
 
 impl RpcClient {
@@ -160,7 +163,9 @@ impl RpcClient {
         Ok(res)
     }
 
+
     // https://docs.nano.org/commands/rpc-protocol/#account_key
+    // gets the public key
     pub fn get_account_key(&self, account: String) -> Result<account_key::AccountKeyResult, reqwest::Error> {
         let request = account_key::AccountKeyRequest {
             action: "account_key".to_string(),
