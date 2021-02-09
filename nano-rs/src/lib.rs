@@ -1,4 +1,3 @@
-mod base;
 
 mod account_balance;
 mod account_block_count;
@@ -73,6 +72,11 @@ mod work_peers_clear;
 mod work_validate;
 // use reqwest;
 
+#[path = "base/base.rs"] mod base;
+#[path = "base/action.rs"] mod action;
+
+use base::Account;
+ use action::Action;
 
 pub struct RpcClient {
     pub rpc_base: String,
@@ -89,8 +93,9 @@ impl RpcClient {
     // https://docs.nano.org/commands/rpc-protocol/#account_balance
     pub fn get_account_balance(&self, account: String) -> Result<account_balance::AccountBalanceResponse, reqwest::Error> {
         let request = account_balance::AccountBalanceRequest {
-            action: "account_balance".to_string(),
-            account: account
+            // action: "account_balance".to_string(),
+            action: Action::AccountBalance.as_str(),
+            account: account,
         };
 
         let client = reqwest::blocking::Client::new();
@@ -105,7 +110,7 @@ impl RpcClient {
     // https://docs.nano.org/commands/rpc-protocol/#account_block_count
     pub fn get_account_block_count(&self, account: String) -> Result<account_block_count::AccountBlockCountResponse, reqwest::Error> {
         let request = account_block_count::AccountBlockCountRequest {
-            action: "account_block_count".to_string(),
+            action: Action::AccountBlockCount.as_str(),
             account: account
         };
 
@@ -121,7 +126,7 @@ impl RpcClient {
     // https://docs.nano.org/commands/rpc-protocol/#account_get
     pub fn get_account_get(&self, key: String) -> Result<account_get::AccountGetResult, reqwest::Error> {
         let request = account_get::AccountGetRequest {
-            action: "account_get".to_string(),
+            action: Action::AccountGet.as_str(),
             key: key
         };
 
@@ -137,7 +142,7 @@ impl RpcClient {
     // https://docs.nano.org/commands/rpc-protocol/#account_history
     pub fn get_account_history(&self, account: String, count: String) -> Result<account_history::AccountHistoryResult, reqwest::Error> {
         let request = account_history::AccountHistoryRequest {
-            action: "account_history".to_string(),
+            action: Action::AccountHistory.as_str(),
             account: account,
             count: count,
         };
@@ -154,7 +159,7 @@ impl RpcClient {
     // https://docs.nano.org/commands/rpc-protocol/#account_info
     pub fn get_account_info(&self, account: String) -> Result<account_info::AccountInfoResult, reqwest::Error> {
         let request = account_info::AccountInfoRequest {
-            action: "account_info".to_string(),
+            action: Action::AccountInfo.as_str(),
             account: account,
         };
 
@@ -172,7 +177,7 @@ impl RpcClient {
     // gets the public key
     pub fn get_account_key(&self, account: String) -> Result<account_key::AccountKeyResult, reqwest::Error> {
         let request = account_key::AccountKeyRequest {
-            action: "account_key".to_string(),
+            action: Action::AccountKey.as_str(),
             account: account,
         };
 
@@ -188,7 +193,7 @@ impl RpcClient {
         // https://docs.nano.org/commands/rpc-protocol/#account_representative
         pub fn get_account_representative(&self, account: String) -> Result<account_representative::Result, reqwest::Error> {
             let request = account_representative::Request {
-                action: "account_representative".to_string(),
+                action: Action::AccountRepresentative.as_str(),
                 account: account,
             };
     
@@ -204,7 +209,7 @@ impl RpcClient {
         // https://docs.nano.org/commands/rpc-protocol/#account_weight
         pub fn get_account_weight(&self, account: String) -> Result<account_weight::Result, reqwest::Error> {
             let request = account_weight::Request {
-                action: "account_weight".to_string(),
+                action: Action::AccountWeight.as_str(),
                 account: account,
             };
     
@@ -268,7 +273,7 @@ impl RpcClient {
         // https://docs.nano.org/commands/rpc-protocol/#active_difficulty
         pub fn get_active_difficulty(&self) -> Result<active_difficulty::Result, reqwest::Error> {
             let request = active_difficulty::Request {
-                action: "active_difficulty".to_string(),
+                action: Action::ActiveDifficulty.as_str(),
             };
     
             let client = reqwest::blocking::Client::new();
@@ -283,7 +288,7 @@ impl RpcClient {
         // https://docs.nano.org/commands/rpc-protocol/#available_supply
         pub fn get_available_supply(&self) -> Result<available_supply::Result, reqwest::Error> {
             let request = available_supply::Request {
-                action: "available_supply".to_string(),
+                action: Action::AvailableSupply.as_str(),
             };
     
             let client = reqwest::blocking::Client::new();
@@ -298,7 +303,7 @@ impl RpcClient {
         // https://docs.nano.org/commands/rpc-protocol/#block_account
         pub fn get_block_account(&self, hash: String) -> Result<block_account::Result, reqwest::Error> {
             let request = block_account::Request {
-                action: "block_account".to_string(),
+                action: Action::BlockAccount.as_str(),
                 hash: hash,
             };
     
@@ -314,7 +319,7 @@ impl RpcClient {
         // https://docs.nano.org/commands/rpc-protocol/#block_confirm
         pub fn get_block_confirm(&self, hash: String) -> Result<block_confirm::Result, reqwest::Error> {
             let request = block_confirm::Request {
-                action: "block_confirm".to_string(),
+                action: Action::BlockConfirm.as_str(),
                 hash: hash,
             };
     

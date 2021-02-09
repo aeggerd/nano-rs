@@ -1,4 +1,5 @@
 // Actions
+
 #[derive(PartialEq)]
 pub enum Action {
     AccountBalance,
@@ -74,9 +75,18 @@ pub enum Action {
     WorkValidate,
 }
 
-impl From<&str> for Action {
-    pub fn from(action: &str) -> Self {
-        match action {
+
+// impl From<AccountBalance> for String {
+//    fn from() -> String {
+//
+//    }
+// }
+
+
+impl From<String> for Action {
+    fn from(action: String) -> Self {
+        let s: &str = &action;  // take a full slice of the string
+        match s {
             "account_balance" => Self::AccountBalance,
             "account_block_count" => Self::AccountBlockCount,
             "account_get" => Self::AccountGet,
@@ -148,6 +158,84 @@ impl From<&str> for Action {
             "work_peers" => Self::WorkPeers,
             "work_peers_clear" => Self::WorkPeersClear,
             "work_validate" => Self::WorkValidate,
+        }
+    }
+}
+
+impl Action {
+    pub fn as_str(&self) -> String {
+        match *self {
+            Self::AccountBalance => "account_balance".to_string(),
+            Self::AccountBlockCount => "account_block_count".to_string(),
+            Self::AccountGet => "account_get".to_string(),
+            Self::AccountHistory => "account_history".to_string(),
+            Self::AccountInfo => "account_info".to_string(),
+            Self::AccountKey => "account_key".to_string(),
+            Self::AccountRepresentative => "account_representative".to_string(),
+            Self::AccountWeight => "account_weight".to_string(),
+            Self::AccountsBalances => "accounts_balances".to_string(),
+            Self::AccountsFrontiers => "accounts_frontiers".to_string(),
+            Self::AccountsPending => "accounts_pending".to_string(),
+            Self::ActiveDifficulty => "active_difficulty".to_string(),
+            Self::AvailableSupply => "available_supply".to_string(),
+            Self::BlockAccount => "block_account".to_string(),
+            Self::BlockConfirm => "block_confirm".to_string(),
+            Self::BlockCount => "block_count".to_string(),
+            Self::BlockCreate => "block_create".to_string(),
+            Self::BlockHash => "block_hash".to_string(),
+            Self::BlockInfo => "block_info".to_string(),
+            Self::Blocks => "blocks".to_string(),
+            Self::BlocksInfo => "blocks_info".to_string(),
+            Self::Bootstrap => "bootstrap".to_string(),
+            Self::BootstrapAny => "bootstrap_any".to_string(),
+            Self::BootstrapLazy => "bootstrap_lazy".to_string(),
+            Self::BootstrapStatus => "bootstrap_status".to_string(),
+            Self::Chain => "chain".to_string(),
+            Self::ConfirmationActive => "confirmation_active".to_string(),
+            Self::ConfirmationHeightCurrentlyProcessing => "confirmation_height_currently_processing".to_string(),
+            Self::ConfirmationHistory => "confirmation_history".to_string(),
+            Self::ConfirmationInfo => "confirmation_info".to_string(),
+            Self::ConfirmationQuorum => "confirmation_quorum".to_string(),
+            Self::DatabaseTxnTracker => "database_txn_tracker".to_string(),
+            Self::Delegators => "delegators".to_string(),
+            Self::DelegatorsCount => "delegators_count".to_string(),
+            Self::DeterministicKey => "deterministic_key".to_string(),
+            Self::EpochUpgrade => "epoch_upgrade".to_string(),
+            Self::FrontierCount => "frontier_count".to_string(),
+            Self::Frontiers => "frontiers".to_string(),
+            Self::Kkeepalive => "keepalive".to_string(),
+            Self::KeyCreate => "key_create".to_string(),
+            Self::KeyExpand => "key_expand".to_string(),
+            Self::Ledger => "ledger".to_string(),
+            Self::NodeId => "node_id".to_string(),
+            Self::NodeIdDelete => "node_id_delete".to_string(),
+            Self::Peers => "peers".to_string(),
+            Self::Pending => "pending".to_string(),
+            Self::PendingExists => "pending_exists".to_string(),
+            Self::Process => "process".to_string(),
+            Self::Representatives => "representatives".to_string(),
+            Self::RepresentativesOnline => "representatives_online".to_string(),
+            Self::Republish => "republish".to_string(),
+            Self::Sign => "sign".to_string(),
+            Self::Stats => "stats".to_string(),
+            Self::StatsClear => "stats_clear".to_string(),
+            Self::Stop => "stop".to_string(),
+            Self::Successors => "successors".to_string(),
+            Self::Telemetry => "telemetry".to_string(),
+            Self::ValidateAccountNumber => "validate_account_number".to_string(),
+            Self::Version => "version".to_string(),
+            Self::Unchecked => "unchecked".to_string(),
+            Self::UncheckedClear => "unchecked_clear".to_string(),
+            Self::UncheckedGet => "unchecked_get".to_string(),
+            Self::UncheckedKeys => "unchecked_keys".to_string(),
+            Self::Unopened => "unopened".to_string(),
+            Self::Uptime => "uptime".to_string(),
+            Self::WorkCancel => "work_cancel".to_string(),
+            Self::WorkGenerate => "work_generate".to_string(),
+            Self::WorkPeerAdd => "work_peer_add".to_string(),
+            Self::WorkPeers => "work_peers".to_string(),
+            Self::WorkPeersClear => "work_peers_clear".to_string(),
+            Self::WorkValidate => "work_validate".to_string(),
         }
     }
 }
