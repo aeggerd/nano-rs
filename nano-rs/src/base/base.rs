@@ -9,13 +9,14 @@ impl From<String> for AccountKey {
     }
 }
 
-#[derive(PartialEq)]
+#[derive(Default, Debug, Clone, PartialEq, serde_derive::Serialize, serde_derive::Deserialize)]
 pub struct Account(String);
 impl From<String> for Account {
     fn from(account: String) -> Self {
         Account(account)
     }
 }
+
 
 pub struct Count(i64);
 impl From<String> for Count {

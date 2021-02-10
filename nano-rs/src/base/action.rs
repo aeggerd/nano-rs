@@ -73,6 +73,7 @@ pub enum Action {
     WorkPeers,
     WorkPeersClear,
     WorkValidate,
+    NoAction,
 }
 
 
@@ -158,6 +159,7 @@ impl From<String> for Action {
             "work_peers" => Self::WorkPeers,
             "work_peers_clear" => Self::WorkPeersClear,
             "work_validate" => Self::WorkValidate,
+            _ => Self::NoAction,
         }
     }
 }
@@ -236,6 +238,7 @@ impl Action {
             Self::WorkPeers => "work_peers".to_string(),
             Self::WorkPeersClear => "work_peers_clear".to_string(),
             Self::WorkValidate => "work_validate".to_string(),
+            Self::NoAction => "no_action".to_string(),
         }
     }
 }
