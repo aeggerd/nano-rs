@@ -5,7 +5,6 @@ pub struct Request {
     pub hash: String,
 }
 
-
 #[derive(Default, Debug, Clone, PartialEq, serde_derive::Serialize, serde_derive::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Result {

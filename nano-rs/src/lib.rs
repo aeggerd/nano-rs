@@ -1,4 +1,3 @@
-
 mod account_balance;
 mod account_block_count;
 mod account_get;
@@ -71,11 +70,13 @@ mod block_confirm;
 // mod work_peers_clear;
 // mod work_validate;
 
-#[path = "base/base.rs"] mod base;
-#[path = "base/action.rs"] mod action;
+#[path = "base/action.rs"]
+mod action;
+#[path = "base/base.rs"]
+mod base;
 
-use base::Account;
 use action::Action;
+use base::Account;
 
 pub struct RpcClient {
     pub rpc_base: String,
@@ -86,11 +87,12 @@ pub struct Walet {
     pub key: base::AccountKey,
 }
 
-
-
 impl RpcClient {
     // https://docs.nano.org/commands/rpc-protocol/#account_balance
-    pub fn get_account_balance(&self, account: String) -> Result<account_balance::AccountBalanceResponse, reqwest::Error> {
+    pub fn get_account_balance(
+        &self,
+        account: String,
+    ) -> Result<account_balance::AccountBalanceResponse, reqwest::Error> {
         let request = account_balance::AccountBalanceRequest {
             // action: "account_balance".to_string(),
             action: Action::AccountBalance.as_str(),
@@ -99,47 +101,57 @@ impl RpcClient {
 
         let client = reqwest::blocking::Client::new();
         let res: account_balance::AccountBalanceResponse = client
-        .post(&self.rpc_base)
-        .body(request.as_vec())
-        .send()?
-        .json()?;
+            .post(&self.rpc_base)
+            .body(request.as_vec())
+            .send()?
+            .json()?;
         Ok(res)
     }
 
     // https://docs.nano.org/commands/rpc-protocol/#account_block_count
-    pub fn get_account_block_count(&self, account: String) -> Result<account_block_count::AccountBlockCountResponse, reqwest::Error> {
+    pub fn get_account_block_count(
+        &self,
+        account: String,
+    ) -> Result<account_block_count::AccountBlockCountResponse, reqwest::Error> {
         let request = account_block_count::AccountBlockCountRequest {
             action: Action::AccountBlockCount.as_str(),
-            account: account
+            account: account,
         };
 
         let client = reqwest::blocking::Client::new();
         let res: account_block_count::AccountBlockCountResponse = client
-        .post(&self.rpc_base)
-        .body(request.as_vec())
-        .send()?
-        .json()?;
+            .post(&self.rpc_base)
+            .body(request.as_vec())
+            .send()?
+            .json()?;
         Ok(res)
     }
 
     // https://docs.nano.org/commands/rpc-protocol/#account_get
-    pub fn get_account_get(&self, key: String) -> Result<account_get::AccountGetResult, reqwest::Error> {
+    pub fn get_account_get(
+        &self,
+        key: String,
+    ) -> Result<account_get::AccountGetResult, reqwest::Error> {
         let request = account_get::AccountGetRequest {
             action: Action::AccountGet.as_str(),
-            key: key
+            key: key,
         };
 
         let client = reqwest::blocking::Client::new();
         let res: account_get::AccountGetResult = client
-        .post(&self.rpc_base)
-        .body(request.as_vec())
-        .send()?
-        .json()?;
+            .post(&self.rpc_base)
+            .body(request.as_vec())
+            .send()?
+            .json()?;
         Ok(res)
     }
 
     // https://docs.nano.org/commands/rpc-protocol/#account_history
-    pub fn get_account_history(&self, account: String, count: String) -> Result<account_history::AccountHistoryResult, reqwest::Error> {
+    pub fn get_account_history(
+        &self,
+        account: String,
+        count: String,
+    ) -> Result<account_history::AccountHistoryResult, reqwest::Error> {
         let request = account_history::AccountHistoryRequest {
             action: Action::AccountHistory.as_str(),
             account: account,
@@ -148,15 +160,18 @@ impl RpcClient {
 
         let client = reqwest::blocking::Client::new();
         let res: account_history::AccountHistoryResult = client
-        .post(&self.rpc_base)
-        .body(request.as_vec())
-        .send()?
-        .json()?;
+            .post(&self.rpc_base)
+            .body(request.as_vec())
+            .send()?
+            .json()?;
         Ok(res)
     }
 
     // https://docs.nano.org/commands/rpc-protocol/#account_info
-    pub fn get_account_info(&self, account: String) -> Result<account_info::AccountInfoResult, reqwest::Error> {
+    pub fn get_account_info(
+        &self,
+        account: String,
+    ) -> Result<account_info::AccountInfoResult, reqwest::Error> {
         let request = account_info::AccountInfoRequest {
             action: Action::AccountInfo.as_str(),
             account: account,
@@ -164,17 +179,19 @@ impl RpcClient {
 
         let client = reqwest::blocking::Client::new();
         let res: account_info::AccountInfoResult = client
-        .post(&self.rpc_base)
-        .body(request.as_vec())
-        .send()?
-        .json()?;
+            .post(&self.rpc_base)
+            .body(request.as_vec())
+            .send()?
+            .json()?;
         Ok(res)
     }
 
-
     // https://docs.nano.org/commands/rpc-protocol/#account_key
     // gets the public key
-    pub fn get_account_key(&self, account: String) -> Result<account_key::AccountKeyResult, reqwest::Error> {
+    pub fn get_account_key(
+        &self,
+        account: String,
+    ) -> Result<account_key::AccountKeyResult, reqwest::Error> {
         let request = account_key::AccountKeyRequest {
             action: Action::AccountKey.as_str(),
             account: account,
@@ -182,155 +199,158 @@ impl RpcClient {
 
         let client = reqwest::blocking::Client::new();
         let res: account_key::AccountKeyResult = client
-        .post(&self.rpc_base)
-        .body(request.as_vec())
-        .send()?
-        .json()?;
+            .post(&self.rpc_base)
+            .body(request.as_vec())
+            .send()?
+            .json()?;
         Ok(res)
     }
 
-        // https://docs.nano.org/commands/rpc-protocol/#account_representative
-        pub fn get_account_representative(&self, account: String) -> Result<account_representative::Result, reqwest::Error> {
-            let request = account_representative::Request {
-                action: Action::AccountRepresentative.as_str(),
-                account: account,
-            };
-    
-            let client = reqwest::blocking::Client::new();
-            let res: account_representative::Result = client
+    // https://docs.nano.org/commands/rpc-protocol/#account_representative
+    pub fn get_account_representative(
+        &self,
+        account: String,
+    ) -> Result<account_representative::Result, reqwest::Error> {
+        let request = account_representative::Request {
+            action: Action::AccountRepresentative.as_str(),
+            account: account,
+        };
+
+        let client = reqwest::blocking::Client::new();
+        let res: account_representative::Result = client
             .post(&self.rpc_base)
             .body(request.as_vec())
             .send()?
             .json()?;
-            Ok(res)
-        }
+        Ok(res)
+    }
 
-        // https://docs.nano.org/commands/rpc-protocol/#account_weight
-        pub fn get_account_weight(&self, account: String) -> Result<account_weight::Result, reqwest::Error> {
-            let request = account_weight::Request {
-                action: Action::AccountWeight.as_str(),
-                account: account,
-            };
-    
-            let client = reqwest::blocking::Client::new();
-            let res: account_weight::Result = client
+    // https://docs.nano.org/commands/rpc-protocol/#account_weight
+    pub fn get_account_weight(
+        &self,
+        account: String,
+    ) -> Result<account_weight::Result, reqwest::Error> {
+        let request = account_weight::Request {
+            action: Action::AccountWeight.as_str(),
+            account: account,
+        };
+
+        let client = reqwest::blocking::Client::new();
+        let res: account_weight::Result = client
             .post(&self.rpc_base)
             .body(request.as_vec())
             .send()?
             .json()?;
-            Ok(res)
-        }
+        Ok(res)
+    }
 
-        // https://docs.nano.org/commands/rpc-protocol/#accounts_balances
-        // pub fn get_accounts_balances(&self, accounts: Vec<String>) -> Result<accounts_balances::Result, reqwest::Error> {
-        //     let request = accounts_balances::Request {
-        //         action: "accounts_balances".to_string(),
-        //         accounts: accounts,
-        //     };
-    
-        //     let client = reqwest::blocking::Client::new();
-        //     let res: accounts_balances::Result = client
-        //     .post(&self.rpc_base)
-        //     .body(request.as_vec())
-        //     .send()?
-        //     .json()?;
-        //     Ok(res)
-        // }
+    // https://docs.nano.org/commands/rpc-protocol/#accounts_balances
+    // pub fn get_accounts_balances(&self, accounts: Vec<String>) -> Result<accounts_balances::Result, reqwest::Error> {
+    //     let request = accounts_balances::Request {
+    //         action: "accounts_balances".to_string(),
+    //         accounts: accounts,
+    //     };
 
-        // https://docs.nano.org/commands/rpc-protocol/#accounts_frontiers
-        // pub fn get_account_weight(&self, account: String) -> Result<accounts_frontiers::Result, reqwest::Error> {
-        //     let request = accounts_frontiers::Request {
-        //         action: "account_weight".to_string(),
-        //         account: account,
-        //     };
-    
-        //     let client = reqwest::blocking::Client::new();
-        //     let res: accounts_frontiers::Result = client
-        //     .post(&self.rpc_base)
-        //     .body(request.as_vec())
-        //     .send()?
-        //     .json()?;
-        //     Ok(res)
-        // }
+    //     let client = reqwest::blocking::Client::new();
+    //     let res: accounts_balances::Result = client
+    //     .post(&self.rpc_base)
+    //     .body(request.as_vec())
+    //     .send()?
+    //     .json()?;
+    //     Ok(res)
+    // }
 
-                // https://docs.nano.org/commands/rpc-protocol/#accounts_pending
-        // pub fn get_account_weight(&self, account: String) -> Result<accounts_pending::Result, reqwest::Error> {
-        //     let request = accounts_pending::Request {
-        //         action: "account_weight".to_string(),
-        //         account: account,
-        //     };
-    
-        //     let client = reqwest::blocking::Client::new();
-        //     let res: accounts_pending::Result = client
-        //     .post(&self.rpc_base)
-        //     .body(request.as_vec())
-        //     .send()?
-        //     .json()?;
-        //     Ok(res)
-        // }
+    // https://docs.nano.org/commands/rpc-protocol/#accounts_frontiers
+    // pub fn get_account_weight(&self, account: String) -> Result<accounts_frontiers::Result, reqwest::Error> {
+    //     let request = accounts_frontiers::Request {
+    //         action: "account_weight".to_string(),
+    //         account: account,
+    //     };
 
-        // https://docs.nano.org/commands/rpc-protocol/#active_difficulty
-        pub fn get_active_difficulty(&self) -> Result<active_difficulty::Result, reqwest::Error> {
-            let request = active_difficulty::Request {
-                action: Action::ActiveDifficulty.as_str(),
-            };
-    
-            let client = reqwest::blocking::Client::new();
-            let res: active_difficulty::Result = client
+    //     let client = reqwest::blocking::Client::new();
+    //     let res: accounts_frontiers::Result = client
+    //     .post(&self.rpc_base)
+    //     .body(request.as_vec())
+    //     .send()?
+    //     .json()?;
+    //     Ok(res)
+    // }
+
+    // https://docs.nano.org/commands/rpc-protocol/#accounts_pending
+    // pub fn get_account_weight(&self, account: String) -> Result<accounts_pending::Result, reqwest::Error> {
+    //     let request = accounts_pending::Request {
+    //         action: "account_weight".to_string(),
+    //         account: account,
+    //     };
+
+    //     let client = reqwest::blocking::Client::new();
+    //     let res: accounts_pending::Result = client
+    //     .post(&self.rpc_base)
+    //     .body(request.as_vec())
+    //     .send()?
+    //     .json()?;
+    //     Ok(res)
+    // }
+
+    // https://docs.nano.org/commands/rpc-protocol/#active_difficulty
+    pub fn get_active_difficulty(&self) -> Result<active_difficulty::Result, reqwest::Error> {
+        let request = active_difficulty::Request {
+            action: Action::ActiveDifficulty.as_str(),
+        };
+
+        let client = reqwest::blocking::Client::new();
+        let res: active_difficulty::Result = client
             .post(&self.rpc_base)
             .body(request.as_vec())
             .send()?
             .json()?;
-            Ok(res)
-        }
+        Ok(res)
+    }
 
-        // https://docs.nano.org/commands/rpc-protocol/#available_supply
-        pub fn get_available_supply(&self) -> Result<available_supply::Result, reqwest::Error> {
-            let request = available_supply::Request {
-                action: Action::AvailableSupply.as_str(),
-            };
-    
-            let client = reqwest::blocking::Client::new();
-            let res: available_supply::Result = client
+    // https://docs.nano.org/commands/rpc-protocol/#available_supply
+    pub fn get_available_supply(&self) -> Result<available_supply::Result, reqwest::Error> {
+        let request = available_supply::Request {
+            action: Action::AvailableSupply.as_str(),
+        };
+
+        let client = reqwest::blocking::Client::new();
+        let res: available_supply::Result = client
             .post(&self.rpc_base)
             .body(request.as_vec())
             .send()?
             .json()?;
-            Ok(res)
-        }
+        Ok(res)
+    }
 
-        // https://docs.nano.org/commands/rpc-protocol/#block_account
-        pub fn get_block_account(&self, hash: String) -> Result<block_account::Result, reqwest::Error> {
-            let request = block_account::Request {
-                action: Action::BlockAccount.as_str(),
-                hash: hash,
-            };
-    
-            let client = reqwest::blocking::Client::new();
-            let res: block_account::Result = client
+    // https://docs.nano.org/commands/rpc-protocol/#block_account
+    pub fn get_block_account(&self, hash: String) -> Result<block_account::Result, reqwest::Error> {
+        let request = block_account::Request {
+            action: Action::BlockAccount.as_str(),
+            hash: hash,
+        };
+
+        let client = reqwest::blocking::Client::new();
+        let res: block_account::Result = client
             .post(&self.rpc_base)
             .body(request.as_vec())
             .send()?
             .json()?;
-            Ok(res)
-        }
+        Ok(res)
+    }
 
-        // https://docs.nano.org/commands/rpc-protocol/#block_confirm
-        pub fn get_block_confirm(&self, hash: String) -> Result<block_confirm::Result, reqwest::Error> {
-            let request = block_confirm::Request {
-                action: Action::BlockConfirm.as_str(),
-                hash: hash,
-            };
-    
-            let client = reqwest::blocking::Client::new();
-            let res: block_confirm::Result = client
+    // https://docs.nano.org/commands/rpc-protocol/#block_confirm
+    pub fn get_block_confirm(&self, hash: String) -> Result<block_confirm::Result, reqwest::Error> {
+        let request = block_confirm::Request {
+            action: Action::BlockConfirm.as_str(),
+            hash: hash,
+        };
+
+        let client = reqwest::blocking::Client::new();
+        let res: block_confirm::Result = client
             .post(&self.rpc_base)
             .body(request.as_vec())
             .send()?
             .json()?;
-            Ok(res)
-        }
-
-
-
+        Ok(res)
+    }
 }

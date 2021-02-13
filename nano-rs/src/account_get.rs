@@ -5,7 +5,6 @@ pub struct AccountGetRequest {
     pub key: String,
 }
 
-
 #[derive(Default, Debug, Clone, PartialEq, serde_derive::Serialize, serde_derive::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct AccountGetResult {

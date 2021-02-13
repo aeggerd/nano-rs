@@ -17,7 +17,6 @@ impl From<String> for Account {
     }
 }
 
-
 pub struct Count(i64);
 impl From<String> for Count {
     fn from(count: String) -> Self {
@@ -47,7 +46,3 @@ impl From<bool> for IncludeActive {
         IncludeActive(incluce_active)
     }
 }
-
-
-
-

@@ -76,17 +76,15 @@ pub enum Action {
     NoAction,
 }
 
-
 // impl From<AccountBalance> for String {
 //    fn from() -> String {
 //
 //    }
 // }
 
-
 impl From<String> for Action {
     fn from(action: String) -> Self {
-        let s: &str = &action;  // take a full slice of the string
+        let s: &str = &action; // take a full slice of the string
         match s {
             "account_balance" => Self::AccountBalance,
             "account_block_count" => Self::AccountBlockCount,
@@ -115,7 +113,9 @@ impl From<String> for Action {
             "bootstrap_status" => Self::BootstrapStatus,
             "chain" => Self::Chain,
             "confirmation_active" => Self::ConfirmationActive,
-            "confirmation_height_currently_processing" => Self::ConfirmationHeightCurrentlyProcessing,
+            "confirmation_height_currently_processing" => {
+                Self::ConfirmationHeightCurrentlyProcessing
+            }
             "confirmation_history" => Self::ConfirmationHistory,
             "confirmation_info" => Self::ConfirmationInfo,
             "confirmation_quorum" => Self::ConfirmationQuorum,
@@ -194,7 +194,9 @@ impl Action {
             Self::BootstrapStatus => "bootstrap_status".to_string(),
             Self::Chain => "chain".to_string(),
             Self::ConfirmationActive => "confirmation_active".to_string(),
-            Self::ConfirmationHeightCurrentlyProcessing => "confirmation_height_currently_processing".to_string(),
+            Self::ConfirmationHeightCurrentlyProcessing => {
+                "confirmation_height_currently_processing".to_string()
+            }
             Self::ConfirmationHistory => "confirmation_history".to_string(),
             Self::ConfirmationInfo => "confirmation_info".to_string(),
             Self::ConfirmationQuorum => "confirmation_quorum".to_string(),

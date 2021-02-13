@@ -7,13 +7,11 @@
 //     pub accounts: Vec<String>,
 // }
 
-
 // #[derive(serde_derive::Serialize, serde_derive::Deserialize)]
 // #[serde(rename_all = "camelCase")]
 // pub struct Result {
 //     balances: Map<String, Balance>,
 // }
-
 
 // #[derive(Default, Debug, Clone, PartialEq, serde_derive::Serialize, serde_derive::Deserialize)]
 // #[serde(rename_all = "camelCase")]
