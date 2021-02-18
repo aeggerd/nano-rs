@@ -1,0 +1,107 @@
+# curl -X POST -d '{
+#   "action": "account_balance",
+#   "account": "nano_154si7ap6d7i4dfjwbbnhkaia5d4ai4nd3uwsmhrsg3dsakbu9ndfxogdsja"
+# }' 127.0.0.1:7076
+
+
+###
+# curl -X POST -d '{
+#   "action": "account_representative",
+#   "account": "nano_39a73oy5ungrhxy5z5oao1xso4zo7dmgpjd4u74xcrx3r1w6rtazuouw6qfi"
+# }' 127.0.0.1:7076
+
+###
+# curl -X POST -d '{
+#   "action": "wallet_create"
+# }' 127.0.0.1:7076
+# {
+#     "wallet": "6C937D2861D4848CE53DBE5DB3ED538A53D820DB6D767204CFDA645E9052AD39"
+# }
+
+###
+# curl -X POST -d '{
+#   "action": "wallet_add",
+#   "wallet": "6C937D2861D4848CE53DBE5DB3ED538A53D820DB6D767204CFDA645E9052AD39",
+#   "key": "EFB31D4108F7878D8F67152720C5D187B2198A64EFE22B32CCDF2FC0D179D7F8"
+# }' 127.0.0.1:7076
+# {
+#     "account": "nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4"
+# }
+
+###
+# curl -X POST -d '{
+#   "action": "wallet_contains",
+#   "wallet": "6C937D2861D4848CE53DBE5DB3ED538A53D820DB6D767204CFDA645E9052AD39",
+#   "account": "nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4"
+# }' 127.0.0.1:7076
+# {
+#     "exists": "1"
+# }
+
+###
+# curl -X POST -d '{
+#   "action": "account_list",
+#   "wallet": "6C937D2861D4848CE53DBE5DB3ED538A53D820DB6D767204CFDA645E9052AD39"
+# }' 127.0.0.1:7076
+
+###
+curl -X POST -d '{
+  "action": "account_balance",
+  "account": "nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4"
+}' 127.0.0.1:7076
+{
+    "balance": "10000000000000000000000000",
+    "pending": "0"
+}
+
+
+###
+# curl -X POST -d '{
+#   "action": "wallet_history",
+#   "wallet": "6C937D2861D4848CE53DBE5DB3ED538A53D820DB6D767204CFDA645E9052AD39"
+# }' 127.0.0.1:7076
+# {                                                                                           
+#     "history": [                                                                            
+#         {                                                                                                                                                                               
+#             "type": "receive",                                                              
+#             "account": "nano_154si7ap6d7i4dfjwbbnhkaia5d4ai4nd3uwsmhrsg3dsakbu9ndfxogdsja",
+#             "amount": "10000000000000000000000000",
+#             "block_account": "nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4",
+#             "hash": "DC5B2E35CEC3FDD22063D8D308731542664640A7B90C4177783D6EE2D9B7F91F",
+#             "local_timestamp": "1613651557"                                                 
+#         },
+
+###
+curl -X POST -d '{
+  "action": "send",
+  "wallet": "6C937D2861D4848CE53DBE5DB3ED538A53D820DB6D767204CFDA645E9052AD39",
+  "source": "nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4",
+  "destination": "nano_154si7ap6d7i4dfjwbbnhkaia5d4ai4nd3uwsmhrsg3dsakbu9ndfxogdsja",
+  "amount": "10000000000000000000000000",
+  "id": "123RandSuper"
+}' 127.0.0.1:7076
+{                                                                                           
+    "block": "BA584638A62ED24475235B3A50F2A2230A440C7143579627C3420BD77978E0FB"
+} 
+
+
+###
+curl -X POST -d '{
+  "action": "account_history",
+  "account": "nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4",
+  "count": "1"
+}' 127.0.0.1:7076
+{
+    "account": "nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4",
+    "history": [
+        {
+            "type": "send",
+            "account": "nano_154si7ap6d7i4dfjwbbnhkaia5d4ai4nd3uwsmhrsg3dsakbu9ndfxogdsja",
+            "amount": "10000000000000000000000000",
+            "local_timestamp": "1613651900",
+            "height": "2",
+            "hash": "BA584638A62ED24475235B3A50F2A2230A440C7143579627C3420BD77978E0FB"
+        }
+    ],
+    "previous": "DC5B2E35CEC3FDD22063D8D308731542664640A7B90C4177783D6EE2D9B7F91F"
+}
