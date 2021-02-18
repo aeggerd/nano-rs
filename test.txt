@@ -105,3 +105,20 @@ curl -X POST -d '{
     ],
     "previous": "DC5B2E35CEC3FDD22063D8D308731542664640A7B90C4177783D6EE2D9B7F91F"
 }
+
+
+
+
+10000000000000000000000000
+0.00001
+
+
+0.00001 * 1000000000000000000000000000000
+
+
+
+curl -X POST -d '{
+  "action": "account_history",
+  "account": "nano_154si7ap6d7i4dfjwbbnhkaia5d4ai4nd3uwsmhrsg3dsakbu9ndfxogdsja",
+  "count": "1"
+}' 127.0.0.1:7076
