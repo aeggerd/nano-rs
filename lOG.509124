@@ -1,0 +1,26 @@
+tiny-link_1  | 2021-02-19T16:40:04.509124945+00:00 DEBUG reqwest::connect - starting new connection: https://graph.12ab.pw/                                                             
+tiny-link_1  | 2021-02-19T16:40:04.591634065+00:00 DEBUG reqwest::async_impl::client - response '200 OK' for https://graph.12ab.pw/                                                     
+tiny-link_1  | 2021-02-19T16:40:04.591700762+00:00 DEBUG tiny_link_rust::nano::graphql - ResponseData { phishtank: Some(CheckAllApisPhishtank { info: Some("test text checked: https://i
+fconfig.co"), is_clean: Some(true), checked_url: "https://ifconfig.co" }), urlhaus: Some(CheckAllApisUrlhaus { checked_url: "https://ifconfig.co", info: Some(""), is_clean: Some(true) 
+}), safebrowsing: Some(CheckAllApisSafebrowsing { checked_url: "https://ifconfig.co", info: Some(""), is_clean: Some(true) }) }                                                         
+tiny-link_1  | 2021-02-19T16:40:04.591723955+00:00 DEBUG tiny_link_rust::nano::graphql - "test text checked: https://ifconfig.co"                                                       
+tiny-link_1  | 2021-02-19T16:40:04.592925051+00:00 INFO tiny_link_rust - graphQl response url is clean: true                                                                            
+tiny-link_1  | 2021-02-19T16:40:04.592954597+00:00 DEBUG tiny_link_rust::nano - do_waller_add request: Request { action: "wallet_add", wallet: "6C937D2861D4848CE53DBE5DB3ED538A53D820DB
+6D767204CFDA645E9052AD39", key: "EFB31D4108F7878D8F67152720C5D187B2198A64EFE22B32CCDF2FC0D179D7F8" }                                                                                    
+tiny-link_1  | 2021-02-19T16:40:04.598890342+00:00 DEBUG reqwest::connect - starting new connection: http://nano:7076/                                                                  
+nano_1       | [2021-Feb-19 16:40:04.599700]: 0x7f1240040540 {"action":"wallet_add","wallet":"6CXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX","key":"EFXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}                                                                                                                                       
+tiny-link_1  | 2021-02-19T16:40:04.601021648+00:00 DEBUG reqwest::async_impl::client - response '200 OK' for http://nano:7076/                                                          
+nano_1       | [2021-Feb-19 16:40:04.600963]: RPC request 0x7f1240040540 completed in: 1305 microseconds                                                                                
+tiny-link_1  | 2021-02-19T16:40:04.601720196+00:00 DEBUG tiny_link_rust::nano - do_waller_add response: Result { account: "nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4" }
+tiny-link_1  | 2021-02-19T16:40:04.601766695+00:00 DEBUG tiny_link_rust::nano - get_account_balance request: Request { action: "account_balance", account: "nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4" }
+tiny-link_1  | 2021-02-19T16:40:04.607570879+00:00 DEBUG reqwest::connect - starting new connection: http://nano:7076/
+nano_1       | [2021-Feb-19 16:40:04.608414]: 0x7f123c096b00 {"action":"account_balance","account":"nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4"}
+nano_1       | [2021-Feb-19 16:40:04.608587]: RPC request 0x7f123c096b00 completed in: 210 microseconds
+tiny-link_1  | 2021-02-19T16:40:04.608645504+00:00 DEBUG reqwest::async_impl::client - response '200 OK' for http://nano:7076/
+tiny-link_1  | 2021-02-19T16:40:04.608982134+00:00 DEBUG tiny_link_rust::nano - get_account_balance response: Result { balance: "939990000000000007000000000", pending: "0" }
+tiny-link_1  | 2021-02-19T16:40:04.610504902+00:00 DEBUG tiny_link_rust::nano - do_send request: Request { action: "send", wallet: "6C937D2861D4848CE53DBE5DB3ED538A53D820DB6D767204CFDA645E9052AD39", source: "nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4", destination: "nano_154si7ap6d7i4dfjwbbnhkaia5d4ai4nd3uwsmhrsg3dsakbu9ndfxogdsja", amount: "9999999999999999000000000", id: "5fc73f76-b358-4e44-9c18-5effadc749f2" }
+tiny-link_1  | 2021-02-19T16:40:04.616227651+00:00 DEBUG reqwest::connect - starting new connection: http://nano:7076/
+nano_1       | [2021-Feb-19 16:40:04.617233]: 0x7f1238084ab0 {"action":"send","wallet":"6CXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX","source":"nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4","destination":"nano_154si7ap6d7i4dfjwbbnhkaia5d4ai4nd3uwsmhrsg3dsakbu9ndfxogdsja","amount":"9999999999999999000000000","id":"5fc73f76-b358-4e44-9c18-5effadc749f2"}
+nano_1       | [2021-Feb-19 16:40:04.618528]: Cached or provided work for block 68D2C15641B89A9BC41130383F04764870DE247A39E94E78C53B680635E49D72 account nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4 is invalid, regenerating
+tiny-link_1  | 2021-02-19T16:40:10.345245938+00:00 DEBUG hyper::server - Incoming stream
