@@ -1,7 +1,7 @@
-# curl -X POST -d '{
-#   "action": "account_balance",
-#   "account": "nano_154si7ap6d7i4dfjwbbnhkaia5d4ai4nd3uwsmhrsg3dsakbu9ndfxogdsja"
-# }' 127.0.0.1:7076
+curl -X POST -d '{
+  "action": "account_balance",
+  "account": "nano_1tig3u4ep8tryuh3cu8iyd8jsgk77dhtuixb89od55e9mrz1nhkc14rugmn4"
+}' 127.0.0.1:7076
 
 
 ###
@@ -109,11 +109,8 @@ curl -X POST -d '{
 
 
 
-10000000000000000000000000
-0.00001
-
-
-0.00001 * 1000000000000000000000000000000
+6150000000000000000000000000 / 1e+30
+0.00615 * 1e+30
 
 
 
